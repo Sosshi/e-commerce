@@ -1,0 +1,132 @@
+{% extends "base.html" %} {% block content %} {% load static %}
+
+<!--Hero Section-->
+<div class="hero-section hero-background">
+    <h1 class="page-title">Organic Fruits</h1>
+</div>
+
+<!--Navigation section-->
+<div class="container">
+    <nav class="biolife-nav">
+        <ul>
+            <li class="nav-item"><a href="index-2.html" class="permal-link">Home</a></li>
+            <li class="nav-item"><a href="#" class="permal-link">Natural Organic</a></li>
+            <li class="nav-item"><span class="current-page">Fresh Fruit</span></li>
+        </ul>
+    </nav>
+</div>
+
+<div class="page-contain single-product">
+    <div class="container">
+
+        <!-- Main content -->
+        <div id="main-content" class="main-content">
+
+            <!-- summary info -->
+            <div class="sumary-product single-layout">
+                <div class="media">
+                    <ul class="biolife-carousel slider-for" data-slick='{"arrows":false,"dots":false,"slidesMargin":30,"slidesToShow":1,"slidesToScroll":1,"fade":true,"asNavFor":".slider-nav"}'>
+                        {% for image in product.images.all %}
+                        <li><img src="{% static 'assets/images/products/p-11.jpg'%}" alt="" width="500" height="500"></li>
+                        {% endfor %}
+
+                    </ul>
+                    <ul class="biolife-carousel slider-nav" data-slick='{"arrows":false,"dots":false,"centerMode":false,"focusOnSelect":true,"slidesMargin":10,"slidesToShow":4,"slidesToScroll":1,"asNavFor":".slider-for"}'>
+                        {% for image in product.images.all %}
+                        <li><img src="{% static 'assets/images/products/p-11.jpg'%}" alt="" width="88" height="88"></li>
+                        {% endfor %}
+
+                    </ul>
+                </div>
+                <div class="product-attribute">
+                    <h3 class="title">{{product.name}}</h3>
+                    <!--<span class="sku">Sku: #76584HH</span>-->
+                    <p class="excerpt">{{product.description}}</p>
+                    <div class="price">
+                        <ins><span class="price-amount"><span class="currencySymbol">MK</span>{{product.price}}</span></ins>
+                        <del><span class="price-amount"><span class="currencySymbol">MK</span>{{product.get_price}}</span></del>
+                    </div>
+                    {% if product.is_onsale %}
+                    <div class="biolife-countdown" data-datetime="2022/02/18 00:00:00"></div>
+                    {% endif %}
+
+                    <div class="shipping-info">
+                        <p class="shipping-day">3-Day Shipping</p>
+                        <p class="for-today">Pree Pickup Today</p>
+                    </div>
+                </div>
+                <div class="action-form">
+                    <div class="quantity-box">
+                        <span class="title">Quantity:</span>
+                        <div class="qty-input">
+                            <input type="text" name="qty12554" value="1" data-max_value="20" data-min_value="1" data-step="1">
+                            <a href="#" class="qty-btn btn-up"><i class="fa fa-caret-up" aria-hidden="true"></i></a>
+                            <a href="#" class="qty-btn btn-down"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <a href="#" class="btn add-to-cart-btn">add to cart</a>
+                    </div>
+                    <div class="social-media">
+                        <ul class="social-list">
+                            <li><a href="#" class="social-link"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                            <li><a href="#" class="social-link"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                            <li><a href="#" class="social-link"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                            <li><a href="#" class="social-link"><i class="fa fa-share-alt" aria-hidden="true"></i></a></li>
+                            <li><a href="#" class="social-link"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="acepted-payment-methods">
+                        <ul class="payment-methods">
+                            <li><img src="{% static 'assets/images/card1.jpg' %}" alt="" width="51" height="36"></li>
+                            <li><img src="{% static 'assets/images/card2.jpg' %}" alt="" width="51" height="36"></li>
+                            <li><img src="{% static 'assets/images/card3.jpg' %}" alt="" width="51" height="36"></li>
+                            <li><img src="{% static 'assets/images/card4.jpg' %}" alt="" width="51" height="36"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- related products -->
+            <div class="product-related-box single-layout">
+                <div class="biolife-title-box lg-margin-bottom-26px-im">
+                    <span class="subtitle">All the best item for You</span>
+                    <h3 class="main-title">Related Products</h3>
+                </div>
+                <ul class="products-list biolife-carousel nav-center-02 nav-none-on-mobile" data-slick='{"rows":1,"arrows":true,"dots":false,"infinite":false,"speed":400,"slidesMargin":0,"slidesToShow":5, "responsive":[{"breakpoint":1200, "settings":{ "slidesToShow": 4}},{"breakpoint":992, "settings":{ "slidesToShow": 3, "slidesMargin":20 }},{"breakpoint":768, "settings":{ "slidesToShow": 2, "slidesMargin":10}}]}'>
+                    {% for product in related_products %}
+                    <li class="product-item">
+                        <div class="contain-product layout-default">
+                            <div class="product-thumb">
+                                <a href="#" class="link-to-product">
+                                    <img src="{% static 'assets/images/products/p-13.jpg' %}" alt="dd" width="270" height="270" class="product-thumnail">
+                                </a>
+                            </div>
+                            <div class="info">
+                                <b class="categories">{{product.category}}</b>
+                                <h4 class="product-title"><a href="#" class="pr-name">{{product.name}}</a></h4>
+                                <div class="price">
+                                    <ins><span class="price-amount"><span class="currencySymbol">MK</span>{{product.price}}</span></ins>
+                                    <del><span class="price-amount"><span class="currencySymbol">MK</span>{{product.get_price}}</span></del>
+                                </div>
+                                <div class="slide-down-box">
+                                    <p class="message">{{product.description}}</p>
+                                    <div class="buttons">
+                                        <a href="#" class="btn wishlist-btn"><i class="fa fa-heart" aria-hidden="true"></i></a>
+                                        <a href="#" class="btn add-to-cart-btn"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>add to cart</a>
+                                        <a href="#" class="btn compare-btn"><i class="fa fa-random" aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {% endfor %}
+
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}

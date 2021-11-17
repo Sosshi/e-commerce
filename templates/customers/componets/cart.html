@@ -1,0 +1,43 @@
+<div class="minicart-contain">
+    <a href="javascript:void(0)" class="link-to">
+        <span class="icon-qty-combine">
+            <i class="icon-cart-mini biolife-icon"></i>
+            <span class="qty">8</span>
+        </span>
+        <span class="title">My Cart -</span>
+        <span class="sub-total">$0.00</span>
+    </a>
+    <div class="cart-content">
+        <div class="cart-inner">
+            <ul class="products">
+                {% for product in cart_products %}
+                <li>
+                    <div class="minicart-item">
+                        <div class="thumb">
+                            <a href="#"><img src="/static/assets/images/minicart/pr-01.jpg" width="90" height="90" alt="National Fresh"></a>
+                        </div>
+                        <div class="left-info">
+                            <div class="product-title"><a href="#" class="product-name">{{product.name}}</a></div>
+                            <div class="price">
+                                <ins><span class="price-amount"><span class="currencySymbol">MK</span>{{product.price}}</span></ins>
+                                <del><span class="price-amount"><span class="currencySymbol">MK</span>{{product.get_price}}</span></del>
+                            </div>
+                            <div class="qty">
+                                <label for="cart[id123][qty]">Qty: <bold>1</bold></label>
+                            </div>
+                        </div>
+                        <div class="action">
+                            <!--<a href="#" class="edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>-->
+                            <a href="#" hx-post="{% url 'remove_from_cart' product.id %}" hx-target="#cart_list"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+            <p class="btn-control">
+                <a href="{% url 'cart_list' %}" class="btn view-cart">view cart</a>
+                <a href="{% url 'checkout' %}" class="btn">checkout</a>
+            </p>
+        </div>
+    </div>
+</div>
