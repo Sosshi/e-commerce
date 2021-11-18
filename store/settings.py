@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     "core",
     # third Party
     "crispy_forms",
+    "django_extensions",
 ]
 
 MIDDLEWARE = [

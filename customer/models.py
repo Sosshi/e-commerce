@@ -6,11 +6,9 @@ from products.models import Product
 
 class Cart(models.Model):
     products = models.ManyToManyField(Product, related_name="cart")
-    user = models.ManyToManyField(
-        get_user_model(),
-        related_name="cart_items",
+    user = models.ForeignKey(
+        get_user_model(), related_name="cart_items", on_delete=models.CASCADE
     )
-    quantity = models.IntegerField(default=1)
 
     def __str__(self):
         return self.user.username

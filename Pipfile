@@ -9,6 +9,9 @@ pillow = "*"
 python-resize-image = "*"
 pylint-django = "*"
 django-crispy-forms = "*"
+jupyter = "*"
+ipython = "*"
+django-extensions = "*"
 
 [dev-packages]
 pylint = "*"

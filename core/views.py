@@ -17,7 +17,10 @@ class HomePage(TemplateView):
         context["top_rated_products"] = Product.objects.filter(is_top_rated=True)
         context["best_saler_products"] = Product.objects.filter(is_best_seller=True)
         context["categories"] = Category.objects.all()
-        context["cart_products"] = self.request.user.cart_items.all()
+        if self.request.user.is_authenticated:
+            context[
+                "cart_products"
+            ] = self.request.user.cart_items.first().products.all()
 
         return context
 
@@ -27,7 +30,7 @@ class ContactPage(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["cart_products"] = self.request.user.cart_items.all()
+        context["cart_products"] = self.request.user.cart_items.first().products.all()
         return context
 
 

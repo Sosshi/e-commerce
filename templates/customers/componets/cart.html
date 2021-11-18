@@ -1,11 +1,12 @@
+{% if user.is_aunthentificated %} {% if cart_products %}
 <div class="minicart-contain">
     <a href="javascript:void(0)" class="link-to">
         <span class="icon-qty-combine">
             <i class="icon-cart-mini biolife-icon"></i>
-            <span class="qty">8</span>
+            <span class="qty">{{cart_products.count}}</span>
         </span>
         <span class="title">My Cart -</span>
-        <span class="sub-total">$0.00</span>
+        <span class="sub-total">MK0.00</span>
     </a>
     <div class="cart-content">
         <div class="cart-inner">
@@ -21,9 +22,6 @@
                             <div class="price">
                                 <ins><span class="price-amount"><span class="currencySymbol">MK</span>{{product.price}}</span></ins>
                                 <del><span class="price-amount"><span class="currencySymbol">MK</span>{{product.get_price}}</span></del>
-                            </div>
-                            <div class="qty">
-                                <label for="cart[id123][qty]">Qty: <bold>1</bold></label>
                             </div>
                         </div>
                         <div class="action">
@@ -41,3 +39,4 @@
         </div>
     </div>
 </div>
+{% endif %} {% endif %}
